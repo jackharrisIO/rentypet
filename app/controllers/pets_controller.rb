@@ -30,7 +30,7 @@ class PetsController < ApplicationController
 
 
   def edit
-
+    @review = Review.find(params[:id])
   end
 
   def destroy
@@ -41,7 +41,9 @@ class PetsController < ApplicationController
 
 
   private
-
+  def task_params
+    params.require(:pet).permit(:name, :age, :personality, :location, :gender, :gender, :child_friendly, :guidelines)
+  end
 
 
 
