@@ -1,0 +1,6 @@
+<h1> @booking</h1>
+
+<p> Info on the booking
+
+<%= @booking.pet_id %>
+<%= @booking.user_id %></p>
