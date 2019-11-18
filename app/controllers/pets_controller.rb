@@ -30,7 +30,7 @@ class PetsController < ApplicationController
 
 
   def edit
-    @review = Review.find(params[:id])
+    @rpet = Pet.find(params[:id])
   end
 
   def destroy
