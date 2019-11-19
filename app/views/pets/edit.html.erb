@@ -1,0 +1,16 @@
+<h1> Add a pet:</h1>
+
+
+<%= simple_form_for @pet do |f| %>
+  <%= f.input :name, label: 'Your pet name please', error: 'Name is mandatory, please specify one' %>
+  <%= f.input :age %>
+  <%= f.input :species %>
+  <%= f.input :personality %>
+  <%= f.input :location  %>
+  <%= f.input :gender  %>
+  <%= f.input :temperament  %>
+  <%= f.input :child_friendly  %>
+  <%= f.input :guidelines  %>
+  <%= f.button :submit %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+<% end %>
