@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+  get "/index_user", to: "pets#index_user"
+  get "pets/index"
+
+
   resources :users do
     resources :pets
   end
@@ -13,6 +17,9 @@ Rails.application.routes.draw do
   resources :bookings do
     resources :reviews
   end
+
+
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

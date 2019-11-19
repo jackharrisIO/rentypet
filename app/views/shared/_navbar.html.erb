@@ -15,16 +15,17 @@
           <%= link_to "Home", "root_path", class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
+          <%= link_to current_user.first_name, user_registration_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://i.pinimg.com/originals/1c/3e/17/1c3e17613708bf2eb1fa111e643a32c4.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "add a pet", new_user_pet_path(current_user)  %>
-
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
+            <%= link_to "Your Account", edit_user_registration_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Your Pets", user_pets_path(current_user) , class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Browse All Pets", pets_path, class: "dropdown-item" %>
+
+
           </div>
         </li>
       <% else %>

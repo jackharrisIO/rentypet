@@ -1,10 +1,15 @@
-<h1> your pets:</h1>
+<%= link_to "Add a pet", new_user_pet_path(current_user), class: "btn btn-primary" %>
+
+<h1> Pets Available:</h1>
 
 
 <p>
-  <% current_user.pets.each do |pet| %>
-  <%#= link_to pet.name , user_pet_path(current_user, pet) %>
-  <%= link_to pet.name , [current_user, pet] %>
+  <% Pet.all.each do |pet| %>
+  <%= link_to pet.name , pet_path(pet) %>
   <br>
   <% end %>
 </p>
+
+<br>
+
+
