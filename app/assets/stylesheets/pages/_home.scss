@@ -8,13 +8,16 @@
   justify-content: center;
 
   .search_card {
-    height: 600px;
-    width: 600px;
-    border-radius: 15px;
+    width: 441px;
+    border-radius: 4px;
     background-color: #FFFFFF;
+    padding: 32px;
+    padding-bottom: 24px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12);
   }
 
   h1 {
+    font-size: 40px;
 
   }
 }
