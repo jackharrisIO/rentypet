@@ -21,6 +21,7 @@ class PetsController < ApplicationController
     else
       render :new
   end
+end
 
 
   def update
@@ -42,9 +43,6 @@ class PetsController < ApplicationController
 
   private
   def task_params
-    params.require(:pet).permit(:name, :age, :personality, :location, :gender, :gender, :child_friendly, :guidelines)
+    params.require(:pet).permit(:name, :age, :personality, :location, :gender, :species, :child_friendly, :guidelines)
   end
-
-
-
 end
