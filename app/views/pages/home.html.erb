@@ -1,13 +1,14 @@
-
 <div class="home_banner d-flex flex-column" style="background-image: url(<%= asset_url('homepage.jpg') %>)">
   <div class="search_card d-flex flex-column">
     <h1>Have a different pet every weekend</h1>
     <form>
-      <h3>WHERE</h3>
-      <input type="text" placeholder="Anywhere">
-      <h3>DATE</h3>
-      <input type="date" placeholder="dd-mm-yyyy"><br><br>
-      <input type="submit" value="Search">
+      <div class="where">WHERE</div>
+        <input class="anywhere" type="text" placeholder="Anywhere"><br>
+      <div class="collect">COLLECT</div>
+        <input class="calender" type="date" placeholder="dd-mm-yyyy"><br><br>
+      <div class="button-right">
+        <input class="search_button" type="submit" value="Search">
+      </div>
     </form>
   </div>
 </div>

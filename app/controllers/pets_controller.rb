@@ -20,7 +20,6 @@ class PetsController < ApplicationController
       redirect_to user_pets_path(current_user)
     else
       render :new
-      raise
     end
   end
 
