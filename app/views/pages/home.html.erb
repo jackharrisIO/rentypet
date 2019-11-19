@@ -1,5 +1,19 @@
-<<<<<<< HEAD
-<h1>Pages#home</h1>
+
+<div class="home_banner d-flex flex-column" style="background-image: url(<%= asset_url('homepage.jpg') %>)">
+  <div class="search_card d-flex flex-column">
+    <h1>Have a different pet every weekend</h1>
+    <form>
+      <h3>WHERE</h3>
+      <input type="text" placeholder="Anywhere">
+      <h3>COLLECT</h3>
+      <input type="date" placeholder="dd-mm-yyyy">
+      <h3>DROP-OFF</h3>
+      <input type="date" placeholder="dd-mm-yyyy"><br><br>
+      <input type="submit" value="Search">
+    </form>
+  </div>
+</div>
+
 
 
 <h2> Your Pets: </h2>
@@ -11,13 +25,4 @@
   <% end %>
 
 </p>
-
-
-
-
 <%= link_to "add a pet", new_user_pet_path(current_user) %>
-=======
-<h1>Woof, good morning!</h1>
-
-<%= image_tag("cute-dog") %>
->>>>>>> 8d1fb5302855bcd7168de4b2f18dc7ee8858ecaf
