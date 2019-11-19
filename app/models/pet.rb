@@ -1,6 +1,7 @@
 class Pet < ApplicationRecord
   belongs_to :user
   has_many :reviews, through: :bookings
+  has_many_attached :photos
   validates :name, presence: true
   validates :species, presence: true
   validates :personality, presence: true
