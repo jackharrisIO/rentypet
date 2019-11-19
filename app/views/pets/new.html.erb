@@ -3,8 +3,13 @@
 
 <%= simple_form_for @pet do |f| %>
   <%= f.input :name, label: 'Your pet name please', error: 'Name is mandatory, please specify one' %>
-  <%= f.input :password, hint: 'No special characters.' %>
-  <%= f.input :email, placeholder: 'user@domain.com' %>
-  <%= f.input :remember_me, inline_label: 'Yes, remember me' %>
+  <%= f.input :age %>
+  <%= f.input :species %>
+  <%= f.input :personality %>
+  <%= f.input :location  %>
+  <%= f.input :gender  %>
+  <%= f.input :temperament  %>
+  <%= f.input :child_friendly  %>
+  <%= f.input :guidelines  %>
   <%= f.button :submit %>
 <% end %>
