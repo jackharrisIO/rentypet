@@ -20,6 +20,7 @@ class PetsController < ApplicationController
       redirect_to pet_path(@pet)
     else
       render :new
+    end
   end
 
 
