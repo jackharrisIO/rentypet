@@ -5,7 +5,7 @@
 
 <p>
   <% Pet.all.each do |pet| %>
-  <%= link_to pet.name , pet_path(pet) %>
+  <%= link_to pet.name , user_pet_path(current_user, pet) %>
   <br>
   <% end %>
 </p>
