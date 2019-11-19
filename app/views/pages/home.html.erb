@@ -1,2 +1,14 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="home_banner d-flex flex-column" style="background-image: url(<%= asset_url('homepage.jpg') %>)">
+  <div class="search_card d-flex flex-column">
+    <h1>Have a different pet every weekend</h1>
+    <form>
+      <h3>WHERE</h3>
+      <input type="text" placeholder="Anywhere">
+      <h3>COLLECT</h3>
+      <input type="date" placeholder="dd-mm-yyyy">
+      <h3>DROP-OFF</h3>
+      <input type="date" placeholder="dd-mm-yyyy"><br><br>
+      <input type="submit" value="Search">
+    </form>
+  </div>
+</div>
