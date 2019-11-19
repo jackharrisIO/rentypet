@@ -83,3 +83,15 @@ $opaque: #B7B7B7;
     border-radius: 4px;
   }
 }
+
+.pets_available {
+  padding: 60px 80px;
+
+  h1 {
+    color: $text_color;
+    font-family: 'Karla', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+}
