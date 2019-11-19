@@ -1,15 +1,41 @@
-
 <div class="home_banner d-flex flex-column" style="background-image: url(<%= asset_url('homepage.jpg') %>)">
   <div class="search_card d-flex flex-column">
     <h1>Have a different pet every weekend</h1>
     <form>
-      <h3>WHERE</h3>
-      <input type="text" placeholder="Anywhere">
-      <h3>DATE</h3>
-      <input type="date" placeholder="dd-mm-yyyy"><br><br>
-      <input type="submit" value="Search">
+      <div class="where">WHERE</div>
+        <input class="anywhere" type="text" placeholder="Anywhere"><br>
+      <div class="collect">COLLECT</div>
+        <input class="calender" type="date" placeholder="dd-mm-yyyy"><br><br>
+      <div class="button-right">
+        <input class="search_button" type="submit" value="Search">
+      </div>
     </form>
   </div>
 </div>
 
+<div class="pets_available" style="background-color: white;">
+  <div class="cards-padding">
+    <div class="cards-margin">
+      <h1>Pets available around the world</h1>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=960&q=80" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary">View</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<% @pets.each do |pet| %>
+ <% pet.photos.each do |photo| %>
+  <%= photo.key %>
+ <% end %>
+<% end %>
