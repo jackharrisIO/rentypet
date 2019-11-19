@@ -4,6 +4,11 @@ class PetsController < ApplicationController
     @pets = Pet.all
   end
 
+  def index_user
+    @user = current_user
+    @pets = @user.pets.all
+  end
+
   def show
     @pet = Pet.find(params[:id])
   end
@@ -20,7 +25,6 @@ class PetsController < ApplicationController
       redirect_to user_pets_path(current_user)
     else
       render :new
-      raise
     end
   end
 
@@ -36,6 +40,7 @@ class PetsController < ApplicationController
   end
 
   def destroy
+    @pet = Pet.find(params[:id])
     @pet.destroy
     redirect_to pets_path
   end

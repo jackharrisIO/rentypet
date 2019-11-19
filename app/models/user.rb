@@ -6,5 +6,6 @@ class User < ApplicationRecord
   has_many :pets
   has_many :bookings
   validates :email, uniqueness: true, presence: true
+  validates :name, presence: true
   has_many :booked_pets, through: :bookings, source: :pet
 end
