@@ -3,7 +3,8 @@
 <p>
   <% current_user.pets.each do |pet| %>
 
-  <%=link_to pet.name , [current_user, pet] %>
+  <%=link_to pet.name , pet_path( pet) %>
+  <% raise %>
   <br>
   <% end %>
 </p>
