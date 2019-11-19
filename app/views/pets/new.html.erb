@@ -1,0 +1,10 @@
+<h1> Add a pet:</h1>
+
+
+<%= simple_form_for @pet do |f| %>
+  <%= f.input :name, label: 'Your pet name please', error: 'Name is mandatory, please specify one' %>
+  <%= f.input :password, hint: 'No special characters.' %>
+  <%= f.input :email, placeholder: 'user@domain.com' %>
+  <%= f.input :remember_me, inline_label: 'Yes, remember me' %>
+  <%= f.button :submit %>
+<% end %>
