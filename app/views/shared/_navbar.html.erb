@@ -12,12 +12,12 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "Home", "root_path", class: "nav-link" %>
+          <%= link_to "Get me outta here!", "https://assets.calm.com/3ebc3a6573abbdddd48af754208df888.mp4", class: "nav-link" %>
         </li>
 
         <li class="nav-item active">
 
-          <%= link_to current_user.first_name, user_registration_path(current_user), class: "nav-link" %>
+          <%= link_to current_user.first_name, user_pets_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://i.pinimg.com/originals/1c/3e/17/1c3e17613708bf2eb1fa111e643a32c4.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
