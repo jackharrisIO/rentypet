@@ -20,6 +20,8 @@
         <li class="nav-item dropdown">
           <%= image_tag "https://i.pinimg.com/originals/1c/3e/17/1c3e17613708bf2eb1fa111e643a32c4.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "add a pet", new_user_pet_path(current_user)  %>
+
             <%= link_to "Action", "#", class: "dropdown-item" %>
             <%= link_to "Another action", "#", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>

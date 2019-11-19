@@ -8,7 +8,6 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
   end
 
-
   def new
     @pet = Pet.new
   end
@@ -16,10 +15,13 @@ class PetsController < ApplicationController
   def create
     # save the data from the form in a pet instance
     @pet = Pet.new(pet_params)
+    @pet.user_id = current_user.id
     if @pet.save
-      redirect_to pet_path(@pet)
+      redirect_to user_pets_path(current_user)
     else
       render :new
+      raise
+    end
   end
 
 
@@ -41,8 +43,8 @@ class PetsController < ApplicationController
 
 
   private
-  def task_params
-    params.require(:pet).permit(:name, :age, :personality, :location, :gender, :gender, :child_friendly, :guidelines)
+  def pet_params
+    params.require(:pet).permit(:name, :age, :personality, :location, :gender, :species, :child_friendly, :guidelines)
   end
 
 
