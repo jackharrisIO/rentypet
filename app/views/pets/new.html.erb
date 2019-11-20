@@ -1,3 +1,4 @@
+<div class="container">
 <h1> Add a pet:</h1>
 
 
@@ -11,6 +12,8 @@
   <%= f.input :temperament  %>
   <%= f.input :child_friendly  %>
   <%= f.input :guidelines  %>
-  <%= f.button :submit %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <br>
+  <%= f.button :submit, class: "add-pet-btn" %>
 <% end %>
+</div>

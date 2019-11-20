@@ -1,6 +1,19 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+
+.navbar-transparent {
+  background-color: transparent;
+}
+
+.navbar-lewagon-black {
+  z-index: 10;
+  background-color: white;
+  color: #484848;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -15,4 +28,14 @@
   color: white;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
+}
+
+.navbar-lewagon .navbar-nav .add-pet {
+    background-color: #ff5a5f;
+    font-family: 'Montserrat', sans-serif;
+    color: white!important;
+    padding: 10px 22px;
+    border-radius: 4px;
+    border-color: #ff5a5f;
+    font-weight: normal;
 }
