@@ -1,4 +1,7 @@
 <div class="home_banner d-flex flex-column" style="background-image: url(<%= asset_url('homepage.jpg') %>)">
+  <br>
+  <br>
+  <br>
   <div class="search_card d-flex flex-column">
     <h1>Have a different pet every weekend</h1>
     <form>
@@ -35,33 +38,18 @@
   </div>
 </div>
 
- -->
- <div class="pets_available" style="background-color: white;">
-  <div class="cards-padding">
-    <div class="cards-margin">
-      <h1>Pets available around the world
-      </h1>
-        <div class="row">
-
-          <% @pets.each do |pet| %>
-            <div class="col-md-6">
-              <div class="card" style="width: 18rem;">
-                <%= cl_image_tag pet.photos.first.key, height: 300, width: 400, crop: :fill %>
-                <div class="card-body">
-                  <h5 class="card-title"></h5>
-                  <p class="card-text"></p>
-                  <a href="#" class="btn btn-primary">View</a>
-                  <%= link_to "See more", pet_path(pet) %>
-                </div>
-              </div>
-            </div>
+ <div class="cards">
+      <% @pets.each do |pet| %>
+          <% pet.photos.first.each do |photo| %>
+        <%img = cl_image_path photo.key%>
+        <div class="list card" style="background-image: url(<%= img %>)">
           <% end %>
+          <h1><%= pet.name %></h1>
+            <%= link_to "See more", pet_path(pet) %>
         </div>
-      </div>
+      <% end %>
     </div>
+
   </div>
 </div>
 
- <%# pet.photos.each do |photo| %>
-  <%#= photo.key %>
-<%# end %>
