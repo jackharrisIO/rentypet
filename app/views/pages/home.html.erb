@@ -46,9 +46,7 @@
           <% @pets.each do |pet| %>
             <div class="col-md-6">
               <div class="card" style="width: 18rem;">
-                <%= pet.photos.each do |photo| %>
-                  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-                <% end %>
+                <%= cl_image_tag pet.photos.first.key, height: 300, width: 400, crop: :fill %>
                 <div class="card-body">
                   <h5 class="card-title"></h5>
                   <p class="card-text"></p>
