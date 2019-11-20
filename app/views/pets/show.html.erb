@@ -2,9 +2,17 @@
 <div class="show_container">
 
 
-  <div class="show_card">
+  <div class="show_card deets">
     <div class="show_details">
-      <h1>Pets</h1>
+      <div style="align-items: center; justify-content: center">
+        <% if @pet.user_id == current_user.id %>
+
+          <%= link_to "Edit", edit_pet_path(@pet),style:"margin: 30px", class: "btn btn-primary"  %>
+
+          <%= link_to "Remove Animal", pet_path, :method => 'delete', class: "btn btn-primary m-3" %>
+
+        <% end %>
+      </div>
 
       <div class="show_photos">
 
@@ -15,50 +23,39 @@
 
       <div class="main_deets">
         <div class="deets">
-          <h3><%= @pet.name %></h3>
+          <h3><%= @pet.name.capitalize %></h3>
           <% if @pet.photos.attached? %>
             <%= cl_image_tag @pet.photos.first.key, height: 300, width: 400, crop: :fill %>
           <% end %>
-        </div>
-        <div>
-          <h6> <%= @pet.location %></h6>
+
+          <h6> <strong> <%= @pet.name.capitalize %>'s Location:</strong><%= @pet.location %></h6>
         </div>
       </div>
 
 
-      <div class="list-inline">
+      <div class="list-inline details_card">
         <ul>
-          <li><%= @pet.age%></li>
-          <li><%= @pet.gender %></li>
-          <li><%= @pet.child_friendly %></li>
+          <li><strong>Age:</strong> <%= @pet.age%></li>
+          <br>
+          <li><strong>Gender:</strong><%= @pet.gender %></li>
+          <br>
+          <li><strong>Child Friendly: </strong><%= @pet.child_friendly==true ? "yes" : "no" %></li>
+          <br>
+          <li><strong>Personality: </strong><%= @pet.personality %></li>
+          <br>
+          <li><strong>Location: </strong><%= @pet.location %></li>
+          <br>
+          <li><strong>Temperament: </strong><%= @pet.temperament %></li>
+          <br>
+
         </ul>
-      </div>
-
-
-
-      <div>
-
-        <p>
-          <br>
-          <%= @pet.personality %>
-          <br>
-          <%= @pet.location %>
-          <br>
-          <br>
-          <%= @pet.temperament %>
-          <br>
-
-          <br>
-          <%= @pet.guidelines %>
-          <br>
-        </p>
-      </div>
-
-      <% if @pet.user_id == current_user.id %>
-      <%= link_to "edit", edit_pet_path(current_user)  %>
-      <br>
-      <%= link_to "Remove Animal", pet_path, :method => 'delete' %>
-      <% end %>
     </div>
+          <div >
+            <strong>Guidelines:</strong>
+            <p class="guidelines">
+              <%= @pet.guidelines %>
+
+            </p>
+          </div>
   </div>
 

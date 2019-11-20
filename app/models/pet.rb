@@ -6,6 +6,7 @@ class Pet < ApplicationRecord
   validates :species, presence: true
   validates :personality, presence: true
   validates :age, presence: true
-  validates :gender, presence: true, inclusion: { in: ['female', 'male'] }
+  validates :photos, presence: true
+  validates :gender, presence: true, inclusion: { in: ['female', 'male', "Female", "Male"] }
   validates :child_friendly, presence: true, inclusion: { in: [true, false] }
 end
