@@ -16,18 +16,33 @@
   border-color: black;
 }
 
+.details_card {
+  padding: 20px;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 20px;
+  margin: 20px
+}
+
 .deets {
   display: flex;
   padding: 15px;
-  margin-top: 25px;
   width: auto;
-  justify-content: space-between;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-color: #ffffff;
   border-radius: 2px;
 
 }
 
+.guidelines {
+  padding: 20px;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 20px;
+
+}
 
 .avatar-large {
   width: 100px;
@@ -40,6 +55,12 @@
 
 .show_details{
   padding: 20px;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: #ff5a5f;
+  border-radius: 10px;
+  box-shadow: 1px 1px 20px;
+
 }
 
 .list-inline {
