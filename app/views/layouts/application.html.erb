@@ -12,16 +12,21 @@
   </head>
   <body>
     <% if current_page?(root_path)  %>
-    <style>
-.navbar-lewagon {
-  position: absolute;
-    width: 100%;
-    background: transparent;
-}
-    </style>
+      <style>
+        .navbar-lewagon {
+          background: transparent;
+          color: white;
+        }
+        .active a {
+          color: white !important;
+        }
+      </style>
     <% end %>
 
     <%= render 'shared/navbar' %>
+    <% unless current_page?(root_path) %>
+      <div style="height: 65.98px"></div>
+    <% end %>
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
