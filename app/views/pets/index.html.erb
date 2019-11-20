@@ -1,33 +1,36 @@
-<%= link_to "Add a pet", new_user_pet_path(current_user), class: "btn btn-primary" %>
-
-<% if @user %>
-  <% if @user == current_user %>
-      <h1>Your pets</h1>
-    <% else %>
-      <h1><%= @user.first_name %>'s pets</h1>
-  <% end %>
-<% else %>
-  <h1>All pets Available:</h1>
-<% end %>
-
-
-<div class="row">
-  <% @pets.each do |pet| %>
-    <div class="col-md-6">
-      <div class="card" style="width: 18rem;">
-        <%= pet.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
-        <div class="card-body">
-          <h5 class="card-title"></h5>
-          <p class="card-text"></p>
-          <a href="#" class="btn btn-primary">View</a>
-          <%= link_to "See more", pet_path(pet) %>
-        </div>
-      </div>
+<div class= "index_container">
+    <div>
+      <%= link_to "Add a pet", new_user_pet_path(current_user), class: "btn btn-primary" %>
     </div>
-  <% end %>
+
+
+    <% if @user %>
+        <% if @user == current_user %>
+          <div>
+            <h1>Your pets</h1>
+          </div>
+        <% else %>
+          <div>
+            <h1><%= @user.first_name %>'s pets</h1>
+          </div>
+        <% end %>
+    <% else %>
+      <div>
+        <h1>All pets Available:</h1>
+      </div>
+    <% end %>
+
+
+    <div class="cards">
+      <% @pets.each do |pet| %>
+          <% pet.photos.each do |photo| %>
+        <%img = cl_image_path photo.key%>
+        <div class="list card" style="background-image: url(<%= img %>)">
+          <% end %>
+          <h1><%= pet.name %></h1>
+            <%= link_to "See more", pet_path(pet) %>
+        </div>
+      <% end %>
+    </div>
 </div>
-
-
 
