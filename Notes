@@ -1,0 +1,8 @@
+1- make dates available
+
+2 - renter select dates
+  if available, books
+    makes them unavailable and send an email to owner
+
+  if unavailable, cannot go through
+

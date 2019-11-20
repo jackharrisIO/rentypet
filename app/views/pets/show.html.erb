@@ -20,4 +20,9 @@
 
 </p>
 
-<%= link_to "Remove Animal", user_pet_path, :method => 'delete' %>
+<% if @pet.user_id == current_user %>
+  <%= link_to "edit", edit_pet_path(current_user)  %>
+  <br>
+
+  <%= link_to "Remove Animal", pet_path, :method => 'delete' %>
+<% end %>

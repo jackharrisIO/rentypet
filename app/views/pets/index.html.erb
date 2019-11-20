@@ -1,11 +1,18 @@
 <%= link_to "Add a pet", new_user_pet_path(current_user), class: "btn btn-primary" %>
 
-<h1> Pets Available:</h1>
-
+<% if @user %>
+  <% if @user == current_user %>
+      <h1>Your pets</h1>
+    <% else %>
+      <h1><%= @user.name %>'s pets</h1>
+  <% end %>
+<% else %>
+  <h1>All pets Available:</h1>
+<% end %>
 
 <p>
-  <% Pet.all.each do |pet| %>
-  <%= link_to pet.name , user_pet_path(current_user, pet) %>
+  <% @pets.each do |pet| %>
+  <%= link_to pet.name , pet_path(pet) %>
   <br>
   <% end %>
 </p>
