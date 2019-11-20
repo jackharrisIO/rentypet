@@ -4,7 +4,7 @@
 
   <div class= "owners_list">
     <% @users.each do |user|%>
-       <%= link_to user.first_name.capitalize, pets_path(user_id: user.id) %>
+       <h2> <%= link_to user.first_name.capitalize, pets_path(user_id: user.id)%> <%= user.last_name.capitalize %></h2>
        <br>
        <br>
 
