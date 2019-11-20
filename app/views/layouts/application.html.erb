@@ -11,17 +11,6 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <% if current_page?(root_path)  %>
-      <style>
-        .navbar-lewagon {
-          background: transparent;
-          color: white;
-        }
-        .active a {
-          color: white !important;
-        }
-      </style>
-    <% end %>
 
     <%= render 'shared/navbar' %>
     <% unless current_page?(root_path) %>
