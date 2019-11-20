@@ -6,6 +6,16 @@
   width: 100%;
 }
 
+.navbar-transparent {
+  background-color: transparent;
+}
+
+.navbar-lewagon-black {
+  z-index: 10;
+  background-color: white;
+  color: #484848;
+}
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }

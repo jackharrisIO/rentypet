@@ -9,9 +9,24 @@ class PetsController < ApplicationController
     end
   end
 
-  def index_user
-    @user = current_user
-    @pets = @user.pets
+
+  def users_list
+    @pets = Pet.all
+    @users = []
+    @pets.each do |pet|
+      user = User.find(pet.user_id)
+      if @users.include? user == false
+      else
+        @users << user
+      end
+    end
+
+  # def specific_user_pets_list
+  #   @user = User.find(params[:user_id])
+  #   @pets = Pet.where(user: @user)
+
+  # end
+
   end
 
   def show

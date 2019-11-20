@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  # get "pets/:id", to: "pets#index_user", as: 'user_pets'
+  get "pets/users", to: "pets#users_list", as: 'users_pet'
+  # get "pets/user/:id", to: "pets#user", as: "specific_user_pets"
   # get "pets/index"
 
 
