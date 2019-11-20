@@ -38,11 +38,9 @@
   </div>
 </div>
 
- -->
-
  <div class="cards">
       <% @pets.each do |pet| %>
-          <% pet.photos.each do |photo| %>
+          <% pet.photos.first.each do |photo| %>
         <%img = cl_image_path photo.key%>
         <div class="list card" style="background-image: url(<%= img %>)">
           <% end %>
