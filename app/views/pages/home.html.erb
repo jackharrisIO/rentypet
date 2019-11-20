@@ -21,7 +21,7 @@
     <% if pet.photos.any? %>
       <% img = cl_image_path(pet.photos.first.key, width: 500, height: 300, crop: :thumb, gravity: :face) %>
     <% else %>
-      <% imge = "URL HERE" %>
+      <% img = "URL HERE" %>
     <% end %>
     <div class="list card" style="background-image: url(<%= img  %>)">
 
