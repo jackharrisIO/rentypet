@@ -1,12 +1,17 @@
 class PetsController < ApplicationController
 
   def index
-    @pets = Pet.all
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @pets = Pet.where(user: @user)
+    else
+      @pets = Pet.all
+    end
   end
 
   def index_user
     @user = current_user
-    @pets = @user.pets.all
+    @pets = @user.pets
   end
 
   def show
