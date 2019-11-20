@@ -1,28 +1,64 @@
-<h1><%= @pet.name %></h1>
+
+<div class="show_container">
 
 
-<p>
-  <%=  @pet.species%>
-  <br>
-  <%= @pet.gender %>
-  <br>
-  <%= @pet.location %>
-  <br>
-  <%= @pet.temperament %>
-  <br>
-  <%= @pet.guidelines %>
-  <br>
-  <%= @pet.age %>
-  <br>
-  <% @pet.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
+  <div class="show_card">
+    <div class="show_details">
+      <h1>Pets</h1>
 
-</p>
+      <div class="show_photos">
 
-<% if @pet.user_id == current_user.id %>
-  <%= link_to "edit", edit_pet_path(current_user)  %>
-  <br>
 
-  <%= link_to "Remove Animal", pet_path, :method => 'delete' %>
-<% end %>
+      </div>
+
+
+
+      <div class="main_deets">
+        <div class="deets">
+          <h3><%= @pet.name %></h3>
+          <% if @pet.photos.attached? %>
+            <%= cl_image_tag @pet.photos.first.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
+        </div>
+        <div>
+          <h6> <%= @pet.location %></h6>
+        </div>
+      </div>
+
+
+      <div class="list-inline">
+        <ul>
+          <li><%= @pet.age%></li>
+          <li><%= @pet.gender %></li>
+          <li><%= @pet.child_friendly %></li>
+        </ul>
+      </div>
+
+
+
+      <div>
+
+        <p>
+          <br>
+          <%= @pet.personality %>
+          <br>
+          <%= @pet.location %>
+          <br>
+          <br>
+          <%= @pet.temperament %>
+          <br>
+
+          <br>
+          <%= @pet.guidelines %>
+          <br>
+        </p>
+      </div>
+
+      <% if @pet.user_id == current_user.id %>
+      <%= link_to "edit", edit_pet_path(current_user)  %>
+      <br>
+      <%= link_to "Remove Animal", pet_path, :method => 'delete' %>
+      <% end %>
+    </div>
+  </div>
+
