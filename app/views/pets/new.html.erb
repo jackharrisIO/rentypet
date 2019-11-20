@@ -5,13 +5,13 @@
 <%= simple_form_for @pet do |f| %>
   <%= f.input :name, label: 'Your pet name please', error: 'Name is mandatory, please specify one' %>
   <%= f.input :age %>
-  <%= f.input :species %>
+  <%= f.input :species, :collection => %w[Dog Cat Teaching-Assistant Ape Reptile] %>
   <%= f.input :personality %>
   <%= f.input :location  %>
-  <%= f.input :gender  %>
-  <%= f.input :temperament  %>
-  <%= f.input :child_friendly  %>
-  <%= f.input :guidelines  %>
+  <%= f.input :gender, :collection => %w[Male Female] %>
+  <%= f.input :temperament, :collection => %w[Calm Nervous Quiet Active] %>
+  <%= f.input :child_friendly , :collection => %w[true false] %>
+  <%= f.input :guidelines %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <br>
   <%= f.button :submit, class: "add-pet-btn" %>
