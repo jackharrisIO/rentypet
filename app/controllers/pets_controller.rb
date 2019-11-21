@@ -32,21 +32,21 @@ class PetsController < ApplicationController
       end
     end
 
-  # def specific_user_pets_list
-  #   @user = User.find(params[:user_id])
-  #   @pets = Pet.where(user: @user)
 
-  # end
   end
 
   def show
+
     @pet = Pet.find(params[:id])
     @pet = Pet.geocoded.find(params[:id])
+
+    @booking = Booking.new
     @markers =
       [{
         lat: @pet.latitude,
         lng: @pet.longitude
       }]
+
   end
 
   def new
@@ -57,6 +57,8 @@ class PetsController < ApplicationController
     # save the data from the form in a pet instance
     @pet = Pet.new(pet_params)
     @pet.user_id = current_user.id
+    @pet.available = true
+
     if @pet.save
       redirect_to user_pets_path(current_user)
     else

@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_21_114734) do
+# <<<<<<< adding-messages
+# ActiveRecord::Schema.define(version: 2019_11_21_114734) do
+
+ActiveRecord::Schema.define(version: 2019_11_21_143432) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,12 +41,13 @@ ActiveRecord::Schema.define(version: 2019_11_21_114734) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.date "date"
+    t.date "startingdate"
     t.string "status"
     t.bigint "user_id"
     t.bigint "pet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "endingdate"
     t.index ["pet_id"], name: "index_bookings_on_pet_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -80,6 +85,7 @@ ActiveRecord::Schema.define(version: 2019_11_21_114734) do
     t.string "species", null: false
     t.float "latitude"
     t.float "longitude"
+    t.boolean "available"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 

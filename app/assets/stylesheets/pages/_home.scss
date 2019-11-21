@@ -15,12 +15,14 @@ $opaque: #B7B7B7;
   .search_card {
     margin-bottom: 50px;
     margin-left: 100px;
-    width: 441px;
+    min-width: 610px;
+    width: fit-content;
     border-radius: 4px;
     background-color: $white;
     padding: 32px;
     padding-bottom: 24px;
     box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    opacity: 0.95;
   }
 
   h1 {
