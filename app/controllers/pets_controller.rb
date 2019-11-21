@@ -46,6 +46,7 @@ class PetsController < ApplicationController
   def show
     @pet = Pet.find(params[:id])
     authorize @pet
+    @booking = Booking.new
     @pet = Pet.geocoded.find(params[:id])
     @markers =
       [{

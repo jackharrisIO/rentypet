@@ -5,15 +5,35 @@
   <div class="show_card deets">
     <div class="show_details">
       <div style="align-items: center; justify-content: center">
+
+
+<!--         <% if @pet.user_id == current_user.id %> -->
+
           <% if policy(@pet).edit? %>
             <%= link_to "Update", edit_pet_path(@pet),style:"margin: 30px", class: "btn btn-primary"  %>
           <% end %>
+
 
 
           <% if policy(@pet).destroy? %>
             <%= link_to "Remove Animal", pet_path, :method => 'delete', class: "btn btn-primary m-3" %>
           <% end %>
 
+          <% elsif current_user.bookings.pluck(:pet_id).include?(@pet.id) %>
+            <div class="">
+            You booked <%= @pet.name %> on the following dates: <br> <%= current_user.bookings.where(pet_id: @pet.id).first.startingdate %> <br> - <br> <%= current_user.bookings.where(pet_id: @pet.id).first.endingdate %>
+            </div>
+          <% else  %>
+
+          <%= simple_form_for [@pet, @booking] do |f| %>
+          <%= f.input :endingdate %>
+          <%= f.input :startingdate %>
+
+          <br>
+          <%= f.button :submit %>
+        <% end %>
+
+        <% end %>
       </div>
 
       <div class="show_photos">
@@ -31,60 +51,8 @@
 
           <h6> <strong> <%= @pet.name.capitalize %>'s Location:</strong><%= @pet.location %></h6>
           </div>
-      <script>
 
-      </script>
-<!-- BOOKING FORM!! -->
       <div style= "padding: 50px">
-
-        <% if current_user %>
-
-
-
-        <div class="main-div-booking details_card">
-          <h2 class="heading">Book Me!</h2>
-          <div class="date-input">
-            <div class="arrival">
-              <h3><i class="fa fa-calendar"></i>&nbsp;&nbsp;Starting Date</h3>
-              <input type="date" id="arrive" class="floatLabel" name="arrive">
-            </div>
-            <div class="departure">
-              <h3><i class="fa fa-calendar"></i>&nbsp;&nbsp;Ending Date</h3>
-              <input type="date" id="depart" class="floatLabel" name="depart"/>
-
-            </div>
-          </div>
-          <div class="comments">
-            <div class="controls">
-            <h4 for="comments">Message</h4>
-            <textarea name="comments" class="floatLabel" id="comments"></textarea>
-          </div>
-          <div class="submit-button">
-            <button type="submit" value="Submit" class="col-1-4 btn btn-primary" formaction="new_booking_path">Submit</button>
-          </div>
-        </div>
-
-        <%= simple_form_for @booking do |f| %>
-        <%= f.input :name, label: 'Your pet name please', error: 'Name is mandatory, please specify one' %>
-        <%= f.input :age %>
-        <%= f.input :species, :collection => %w[Dog Cat Teaching-Assistant Ape Reptile],class: 'select2' %>
-        <%= f.input :personality %>
-        <%= f.input :location , id:"location" %>
-
-        <%= f.input :gender, :collection => %w[Male Female] ,class: 'select2' %>
-        <%= f.input :temperament, :collection => %w[Calm Nervous Quiet Active], class: 'select2' %>
-        <%= f.input :child_friendly , :collection => %w[true false]  %>
-        <%= f.input :guidelines %>
-        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-        <br>
-        <%= f.button :submit, class: "add-pet-btn" %>
-      <% end %>
-
-
-        <% else  %>
-          <p> You Must Login To Make a Booking</p>
-
-        <% end %>
 
 
       </div>
