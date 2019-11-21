@@ -47,7 +47,7 @@
         <% end %>
     <% else %>
       <div>
-        <h1>All pets Available:</h1>
+        <h1>Found <%= pluralize(@pets.size, 'result') %> for "<%= params[:query] %>"</h1>
         <div class="cards">
                 <% @pets.each do |pet| %>
                   <% if pet.photos.any? %>
