@@ -47,7 +47,7 @@ algoliaAuto();
 
   <%= f.input :gender, :collection => %w[Male Female] ,class: 'select2' %>
   <%= f.input :temperament, :collection => %w[Calm Nervous Quiet Active], class: 'select2' %>
-  <%= f.input :child_friendly , :collection => %w[true false]  %>
+  <%= f.input :child_friendly  %>
   <%= f.input :guidelines %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <br>

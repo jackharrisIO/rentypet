@@ -1,24 +1,29 @@
 class PetsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
   def index
     if params[:user_id]
       @user = User.find(params[:user_id])
       @pets = Pet.where(user: @user)
     else
       @pets = Pet.where(user: @user)
-      @pets_location = Pet.geocoded
-      @markers = @pets.map do |pet| {
-        lat: pet.latitude,
-        lng: pet.longitude
-      }
+      # @pets_location = Pet.geocoded
+      # @markers = @pets.map do |pet| {
+      #   lat: pet.latitude,
+      #   lng: pet.longitude
+      # }
       end
-      @pets = Pet.all
-      @pets_location = Pet.geocoded
-      @markers = @pets.map do |pet| {
-        lat: pet.latitude,
-        lng: pet.longitude
-      }
+
+      if params[:query].present?
+        @pets = Pet.where("species ILIKE ?", "%#{params[:query]}%")
+      else
+        @pets = Pet.all
       end
-    end
+      # @pets_location = Pet.geocoded
+      # @markers = @pets.map do |pet| {
+      #   lat: pet.latitude,
+      #   lng: pet.longitude
+      # }
+      # end
   end
 
   def users_list
