@@ -4,8 +4,22 @@ class PetsController < ApplicationController
     if params[:user_id]
       @user = User.find(params[:user_id])
       @pets = Pet.where(user: @user)
+      @pets_location = Pet.geocoded
+      @markers = @pets.map do |pet|
+      {
+        lat: pet.latitude,
+        lng: pet.longitude
+      }
+    end
     else
       @pets = Pet.all
+      @pets_location = Pet.geocoded
+      @markers = @pets.map do |pet|
+      {
+        lat: pet.latitude,
+        lng: pet.longitude
+      }
+    end
     end
   end
 
@@ -30,8 +44,13 @@ class PetsController < ApplicationController
   end
 
   def show
+    @pet = Pet.geocoded.find(params[:id])
+    @markers =
+      [{
+        lat: @pet.latitude,
+        lng: @pet.longitude
+      }]
 
-    @pet = Pet.find(params[:id])
   end
 
   def new
