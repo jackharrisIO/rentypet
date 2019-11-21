@@ -12,10 +12,12 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
     @booking = Booking.new(booking_params)
+    @booking.user = current_user
+    @booking.pet = Pet.find(params[:pet_id])
+    @booking.status = "pending"
     if @booking.save
-      redirect_to booking_path
+      redirect_to @booking.pet
     else
       render 'new'
     end
@@ -43,6 +45,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:date, :status)
+    params.require(:booking).permit(:endingdate, :status, :message, :startingdate, :user_id, :pet_id)
   end
 end
