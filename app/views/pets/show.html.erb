@@ -9,13 +9,13 @@
 
 
 
-          <% if policy(@pet).edit? %>
+          <% if current_user.id == @pet.user_id %>
             <%= link_to "Update", edit_pet_path(@pet),style:"margin: 30px", class: "btn btn-primary"  %>
           <% end %>
 
 
 
-          <% if policy(@pet).destroy? %>
+          <% if current_user.id == @pet.user_id %>
             <%= link_to "Remove Animal", pet_path, :method => 'delete', class: "btn btn-primary m-3" %>
 
           <% elsif current_user.bookings.pluck(:pet_id).include?(@pet.id) %>
