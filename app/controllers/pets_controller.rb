@@ -23,6 +23,7 @@ class PetsController < ApplicationController
       }
     end
   end
+  end
 
   def users_list
     @pets = Pet.all
