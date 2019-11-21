@@ -41,7 +41,6 @@ class PetsController < ApplicationController
   end
 
   def show
-
     @pet = Pet.find(params[:id])
     @pet = Pet.geocoded.find(params[:id])
 
@@ -62,8 +61,7 @@ class PetsController < ApplicationController
     # save the data from the form in a pet instance
     @pet = Pet.new(pet_params)
     @pet.user_id = current_user.id
-    @pet.available = true
-
+    # @pet.available = true
     if @pet.save
       redirect_to user_pets_path(current_user)
     else
@@ -73,12 +71,16 @@ class PetsController < ApplicationController
 
   def update
     @pet = Pet.find(params[:id])
-    @pet.update(pet_params)
+    @pet.update!(pet_params)
     redirect_to pet_path(@pet)
+
+
+
   end
 
   def edit
     @pet = Pet.find(params[:id])
+
   end
 
   def destroy
@@ -90,6 +92,6 @@ class PetsController < ApplicationController
   private
 
   def pet_params
-    params.require(:pet).permit(:name, :age, :personality, :location, :gender, :species, :child_friendly, :guidelines, photos: [])
+    params.require(:pet).permit(:name, :age, :personality, :available, :location, :gender, :species, :child_friendly, :guidelines, photos: [])
   end
 end
