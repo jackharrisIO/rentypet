@@ -7,7 +7,7 @@ const initMapbox = () => {
     mapboxgl.accessToken = process.env.MAPBOX_API_KEY;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/rrgthompson/ck38m4yr722w41cmy1d3vevin'
     });
   }
 };
