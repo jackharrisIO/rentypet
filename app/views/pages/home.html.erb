@@ -17,6 +17,7 @@
   </div>
 </div>
 
+<div class="pet_search">
 <div>
 <%= form_tag pets_path, method: :get do %>
   <%= text_field_tag :query,
@@ -24,9 +25,12 @@
     class: "form-control",
     placeholder: "Search by category"
   %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
+  <%= submit_tag "Search", class: "btn btn-dark" %>
 <% end %>
 </div>
+
+
+
 
 
 
