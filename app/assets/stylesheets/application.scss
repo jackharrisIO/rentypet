@@ -21,10 +21,19 @@ $brand-color:  #1b3d4d;
 $booking-green: #bdcc00;
 $asphalt:     #506982;
 
+.cool-cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+  margin: 50px;
+
+}
+
 .card-form {
   border: 3px solid $border;
   border-radius: 10px;
-  padding: 20px;
+  padding: 50px;
   margin: 20px;
 }
 

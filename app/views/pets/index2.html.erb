@@ -1,0 +1,63 @@
+<div class= "index_container">
+
+
+
+
+
+    <% if params[:user_id] == current_user %>
+      <% if current_user.pets.pluck(:name).empty? %>
+      <div>
+        <h1> You havent listed any pet yet!</h1>
+      </div>
+      <% else %>
+      <div>
+        <h1>Your pets</h1>
+        <div class="container">
+          <div class="row">
+            <% current_user.pets.each do |pet| %>
+            <div class="col-12 col-sm-6 col-md-4">
+              <% if pet.photos.any? %>
+              <div class="card-image">
+                <% img = cl_image_path(pet.photos.first.key, width: 350, height: 300, crop: :thumb, gravity: :face) %>
+                <% else %>
+                <% img = "https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80" %>
+                <% end %>
+                <%= link_to pet_path(pet) do %>
+                <div class="list card-my" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0)), url(<%= img  %>)">
+                  <h2><%= pet.name %></h2>
+                </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <% else %>
+      <div>
+        <h1><%= User.find(params[:user_id]).first_name %>'s pets</h1>
+        <div class="row">
+          <% User.find(params[:user_id]).pets.each do |pet| %>
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card-image">
+                <% if pet.photos.any? %>
+                  <% img = cl_image_path(pet.photos.first.key, width: 350, height: 300, crop: :thumb, gravity: :face) %>
+                <% else %>
+                  <% img = "https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80" %>
+                <% end %>
+                <%= link_to pet_path(pet) do %>
+                <div class="list card-my" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0)), url(<%= img  %>)">
+                  <h2><%= pet.name %></h2>
+                </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+</div>
+
+
+
+
