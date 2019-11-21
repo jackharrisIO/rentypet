@@ -1,4 +1,45 @@
-<h1> Bookings:</h1>
+<div class="container">
+  <div>
+    <h1> Bookings you have requested:</h1>
+    <% @bookings.each do |booking| %>
+      <% if booking.user_id == current_user.id %>
+        <div class= "card">
+          <p><strong> Name: </strong><%= Pet.find(booking.pet_id).name.capitalize %></p>
+          <br>
+          <p><strong> Status: </strong><%= booking.status %></p>
+          <br>
+          <p><strong> Starting Date: </strong><%= booking.startingdate %></p>
+          <p><strong> Ending Date: </strong><%= booking.endingdate %></p>
+        </div>
+        <% end %>
+    <% end %>
+  </div>
 
+  <br>
+  <br>
 
-<p><%= @bookings %></p>
+  <div>
+    <h1> Bookings you have received:</h1>
+    <% @bookings.each do |booking| %>
+
+    <% pet = Pet.find(booking.pet_id) %>
+    <% if pet.user_id == current_user.id %>
+    <div class= "card-form">
+
+          <p><strong>Renter's Name: </strong> <%= User.find(booking.user_id).first_name.capitalize %> <%= User.find(booking.user_id).last_name.capitalize %></p>
+
+          <br>
+          <p> <strong>Status: </strong> <%= booking.status %></p>
+          <br>
+          <p> <strong>  Starting Date: </strong><%= booking.startingdate %></p>
+          <p> <strong> Ending Date: </strong><%= booking.endingdate %></p>
+          <%= simple_form_for [booking] do |f| %>
+          <%= f.input :status,:collection => %w[Pending Accepted Declined] %>
+          <%= f.button :submit, class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end  %>
+  </div>
+</div>
+
