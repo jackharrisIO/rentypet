@@ -1,14 +1,17 @@
 class BookingsController < ApplicationController
   def index
     @bookings = Booking.all
+    authorize @bookings
   end
 
   def show
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def new
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
@@ -16,6 +19,8 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.pet = Pet.find(params[:pet_id])
     @booking.status = "pending"
+    authorize @booking
+
     if @booking.save
       redirect_to @booking.pet
     else
@@ -28,8 +33,10 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
+    authorize @booking
     if @booking.update(booking_params)
       redirect_to booking_path
+
     else
       render 'edit'
     end
@@ -37,6 +44,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
+    authorize @booking
     @booking.destroy
 
     redirect_to bookings_path

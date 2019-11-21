@@ -7,7 +7,7 @@
       <div style="align-items: center; justify-content: center">
 
 
-<!--         <% if @pet.user_id == current_user.id %> -->
+
 
           <% if policy(@pet).edit? %>
             <%= link_to "Update", edit_pet_path(@pet),style:"margin: 30px", class: "btn btn-primary"  %>
@@ -17,7 +17,6 @@
 
           <% if policy(@pet).destroy? %>
             <%= link_to "Remove Animal", pet_path, :method => 'delete', class: "btn btn-primary m-3" %>
-          <% end %>
 
           <% elsif current_user.bookings.pluck(:pet_id).include?(@pet.id) %>
             <div class="">
@@ -31,6 +30,10 @@
 
           <br>
           <%= f.button :submit %>
+
+
+          <script> Swal.fire('Hello world!')</script>
+
         <% end %>
 
         <% end %>
@@ -43,6 +46,7 @@
 
       <div class="main_deets">
         <div class="deets">
+
           <div style= "padding: 50px">
           <h3><%= @pet.name.capitalize %></h3>
           <% if @pet.photos.attached? %>
