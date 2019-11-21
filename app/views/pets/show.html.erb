@@ -5,13 +5,15 @@
   <div class="show_card deets">
     <div class="show_details">
       <div style="align-items: center; justify-content: center">
-        <% if @pet.user_id == current_user.id %>
+          <% if policy(@pet).edit? %>
+            <%= link_to "Update", edit_pet_path(@pet),style:"margin: 30px", class: "btn btn-primary"  %>
+          <% end %>
 
-          <%= link_to "Edit", edit_pet_path(@pet),style:"margin: 30px", class: "btn btn-primary"  %>
 
-          <%= link_to "Remove Animal", pet_path, :method => 'delete', class: "btn btn-primary m-3" %>
+          <% if policy(@pet).destroy? %>
+            <%= link_to "Remove Animal", pet_path, :method => 'delete', class: "btn btn-primary m-3" %>
+          <% end %>
 
-        <% end %>
       </div>
 
       <div class="show_photos">
