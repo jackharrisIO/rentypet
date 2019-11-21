@@ -44,8 +44,13 @@ class PetsController < ApplicationController
   end
 
   def show
+    @pet = Pet.geocoded.find(params[:id])
+    @markers =
+      [{
+        lat: @pet.latitude,
+        lng: @pet.longitude
+      }]
 
-    @pet = Pet.find(params[:id])
   end
 
   def new
