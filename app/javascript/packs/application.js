@@ -3,6 +3,7 @@ import "bootstrap";
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { initAutocomplete } from '../components/init_autocomplete';
 
+
 // import 'select2/dist/css/select2.css';
 
 // import { initSelect2 } from '../components/initselect2';
@@ -20,5 +21,3 @@ import { loadDynamicBannerText } from '../components/banner';
 loadDynamicBannerText();
 
 
-import "sweetalert2"
-sweetalert2();
