@@ -6,7 +6,21 @@ class PetsController < ApplicationController
       @pets = policy_scope(Pet).where(user: @user)
     else
       @pets = policy_scope(Pet).order(created_at: :desc)
-    end
+      @pets = Pet.where(user: @user)
+      @pets_location = Pet.geocoded
+      @markers = @pets.map do |pet|
+      {
+        lat: pet.latitude,
+        lng: pet.longitude
+      }
+      end
+      @pets = Pet.all
+      @pets_location = Pet.geocoded
+      @markers = @pets.map do |pet|
+      {
+        lat: pet.latitude,
+        lng: pet.longitude
+      }
   end
 
   def users_list
