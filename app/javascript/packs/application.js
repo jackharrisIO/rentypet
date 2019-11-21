@@ -18,3 +18,7 @@ initMapbox();
 
 import { loadDynamicBannerText } from '../components/banner';
 loadDynamicBannerText();
+
+
+import "sweetalert2"
+sweetalert2();

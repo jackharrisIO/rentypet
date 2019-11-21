@@ -7,6 +7,7 @@ class Pet < ApplicationRecord
   validates :personality, presence: true
   validates :age, presence: true
   validates :photos, presence: true
+  validates :available, presence: true
   validates :gender, presence: true, inclusion: { in: ['female', 'male', "Female", "Male"] }
   validates :child_friendly, presence: true, inclusion: { in: [true, false] }
   geocoded_by :location
