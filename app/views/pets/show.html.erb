@@ -18,6 +18,7 @@
           <% if current_user.id == @pet.user_id %>
             <%= link_to "Remove Animal", pet_path, :method => 'delete', class: "btn btn-primary m-3" %>
 
+
           <% elsif current_user.bookings.pluck(:pet_id).include?(@pet.id) %>
             <div class="">
             You booked <%= @pet.name %> on the following dates: <br> <%= current_user.bookings.where(pet_id: @pet.id).first.startingdate %> <br> - <br> <%= current_user.bookings.where(pet_id: @pet.id).first.endingdate %>
@@ -40,13 +41,19 @@
         <% end %>
       </div>
 
-      <div class="show_photos">
 
+            <%= simple_form_for @pet do |f| %>
+             <div class="custom-control custom-switch">
+                <%= f.check_box :available, class: "custom-control-input", id: "customSwitch1", onchange: "this.form.submit()"   %>
 
-      </div>
+              <label class="custom-control-label" for="customSwitch1">Available </label>
+             </div>
+             <div class="actions">
+             </div>
 
-      <div class="main_deets">
+            </div>
         <div class="deets">
+           <% end %>
 
           <div style= "padding: 50px">
           <h3><%= @pet.name.capitalize %></h3>
