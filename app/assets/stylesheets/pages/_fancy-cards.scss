@@ -10,7 +10,7 @@
   margin: 30px auto;
   width: 350px;
   height: 300px;
-  border-radius: 40px;
+  border-radius: 5px;
 box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.15), -5px -5px 30px 7px rgba(0,0,0,0.18);
   cursor: pointer;
   transition: 0.4s;
@@ -19,19 +19,19 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.15), -5px -5px 30px 7px rgba(0,0,0,0.1
 .card-my .card_image {
   width: inherit;
   height: inherit;
-  border-radius: 40px;
+  border-radius: 5px;
 }
 
 .card-my .card_image img {
   width: inherit;
   height: inherit;
-  border-radius: 40px;
+  border-radius: 5px;
   object-fit: cover;
 }
 
 .card-my .card_title {
   text-align: center;
-  border-radius: 0px 0px 40px 40px;
+  border-radius: 0px 0px 5px 5px;
   font-family: sans-serif;
   font-weight: bold;
   font-size: 30px;
