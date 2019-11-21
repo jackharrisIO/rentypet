@@ -21,6 +21,7 @@ class PetsController < ApplicationController
         lat: pet.latitude,
         lng: pet.longitude
       }
+    end
   end
 
   def users_list
