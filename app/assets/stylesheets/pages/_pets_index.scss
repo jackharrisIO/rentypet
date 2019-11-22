@@ -1,3 +1,30 @@
+h1 {
+    color: $text_color;
+    font-family: 'Karla', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+h5 {
+  color: $text_color;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+h3 {
+  color: $text_color;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+h4 {
+  color: $text_color;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
 
 .index_container {
   display: flex;
