@@ -1,89 +1,110 @@
 <div class="container">
   <% if @user %>
-              <% if @user == current_user %>
-                              <% if current_user.pets.pluck(:name).empty? %>
-                              <div>
-                                <h1> You havent listed any pet yet!</h1>
-                              </div>
+  <% if @user == current_user %>
+  <% if current_user.pets.pluck(:name).empty? %>
+  <div>
+    <h1> You haven't listed any pet yet!</h1>
+  </div>
 
-                              <% else %>
-                                <h1>Your pets</h1>
-                                <div class="container">
-                                  <div class="row">
-                                    <% current_user.pets.each do |pet| %>
-                                    <div class="col-12 col-sm-6 col-md-4">
-                                      <div class="card-image">
-                                        <% img = cl_image_path(pet.photos.first.key, width: 350, height: 300, crop: :thumb, gravity: :face) %>
-                                              <%= link_to pet_path(pet) do %>
-                                              <div class="list card-my" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0)), url(<%= img  %>)">
-                                                <h2><%= pet.name.capitalize %></h2>
-                                              </div>
-                                              <% end %>
-                                      </div>
-                                    </div>
-                                    <% end %>
-                                  </div>
-                                </div>
-                              <% end %>
-
-
-
-              <% elsif @user.id != current_user.id %>
-                            <div class="container">
-                              <h1><%= User.find(params[:user_id]).first_name.capitalize %>'s pets</h1>
-                              <div class="row">
-                                <% User.find(params[:user_id]).pets.each do |pet| %>
-                                  <% if pet.available %>
-                                            <div class="col-12 col-sm-6 col-md-4">
-                                              <div class="card-image">
-                                                <% img = cl_image_path(pet.photos.first.key, width: 350, height: 300, crop: :thumb, gravity: :face) %>
-                                                <%= link_to pet_path(pet) do %>
-                                                <div class="list card-my" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0)), url(<%= img  %>)">
-                                                  <h2><%= pet.name.capitalize %></h2>
-                                                </div>
-                                                <% end %>
-                                              </div>
-                                            </div>
-                                  <% end %>
-                                <% end %>
-                              </div>
-                            </div>
-                <% end %>
   <% else %>
-                <div class="container">
+  <h1>Your pets</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="card-pet">
+          <% current_user.pets.each do |pet| %>
+          <% if pet.photos.any? %>
+          <%= cl_image_tag pet.photos.first.key, width: 350, height: 300, crop: :thumb, gravity: :face %>
+          <% else %>
+          <% img = "https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80" %>
+          <% end %>
+          <%= link_to pet_path(pet), class: "link-no-style" do %>
+          <div class="card-pet-infos">
+            <div>
+              <h2><%= pet.name %></h2>
+              <p><%= pet.location %></p>
+            </div>
+            <h2 class="card-pet-pricing"></h2>
 
-                  <% if params[:query].present? %>
+            <% if pet.user.photo.key %>
+            <%= cl_image_tag pet.user.photo.key, class: "avatar-bordered" %>
+            <% else %>
+            <%= image_tag "https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1745&q=80", class: "avatar-bordered dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
 
-                      <h1>Found <%= pluralize(@pets.size, 'result') %> for "<%= params[:query] %>"</h1>
-                    <% else  %>
 
-                    <h1> All pets available</h1>
-                  <% end %>
-                  <div class="row">
 
-                    <% @pets.each do |pet| %>
-                    <% if pet.available %>
 
-                    <div class="col-6">
+    <% elsif @user.id != current_user.id %>
+    <div class="container">
+      <h1><%= User.find(params[:user_id]).first_name.capitalize %>'s pets</h1>
+      <div class="row">
+        <% User.find(params[:user_id]).pets.each do |pet| %>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="card-image">
+            <% img = cl_image_path(pet.photos.first.key, width: 350, height: 300, crop: :thumb, gravity: :face) %>
+            <%= link_to pet_path(pet) do %>
+            <div class="list card-my" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0)), url(<%= img  %>)">
+              <h2><%= pet.name.capitalize %></h2>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+    <% else %>
+    <div class="container">
 
-                       <div class="card-image">
+      <% if params[:query].present? %>
 
-                        <% img = cl_image_path(pet.photos.first.key, width: 350, height: 300, crop: :thumb, gravity: :face) %>
-                        <%= link_to pet_path(pet) do %>
-                          <div class="list card-my" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0)), url(<%= img  %>)">
-                            <h2><%= pet.name.capitalize %></h2>
-                          </div>
-                        <% end %>
+      <h1>Found <%= pluralize(@pets.size, 'result') %> for "<%= params[:query] %>"</h1>
+      <% else  %>
 
-                      </div>
 
-                    </div>
+      <h1> All pets available</h1>
+      <div class="container">
+          <div class="row">
+              <div class="col-12 col-sm-6 col-md-4">
+                <div class="card-pet">
+                  <% @pets.each do |pet| %>
+                    <% if pet.photos.any? %>
+                      <%= cl_image_tag pet.photos.first.key, width: 350, height: 300, crop: :thumb, gravity: :face %>
+                    <% else %>
+                      <% img = "https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80" %>
                     <% end %>
+                    <%= link_to pet_path(pet), class: "link-no-style" do %>
+                      <div class="card-pet-infos">
+                        <div>
+                          <h2><%= pet.name %></h2>
+                          <p><%= pet.location %></p>
+                        </div>
+                        <h2 class="card-pet-pricing"></h2>
+
+
+                        <% if pet.user.photo.key %>
+                          <%= cl_image_tag pet.user.photo.key, class: "avatar-bordered" %>
+                        <% else %>
+                          <%= image_tag "https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1745&q=80", class: "avatar-bordered dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                        <% end %>
+                      </div>
                     <% end %>
 
                   </div>
+                <% end %>
+              </div>
 
-                </div>
+            </div>
+      <% end %>
+
 
   <% end %>
 </div>

@@ -18,8 +18,7 @@
           <%= link_to current_user.first_name, user_pets_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
-         <%=   cl_image_tag(current_user.photo.key, :transformation=>[
-          {:width=>50, :height=>50, :radius=>"max", :gravity=>"faces", :border=>"3px_solid_black", :crop=>"thumb"}]) %>
+         <%=   cl_image_tag(current_user.photo.key, class: "avatar-bordered") %>
 
              <%= link_to "Your Account", edit_user_registration_path(current_user), class: "dropdown-item" %>
              <%= link_to "Your Pets", pets_path(user_id: current_user) , class: "dropdown-item" %>
