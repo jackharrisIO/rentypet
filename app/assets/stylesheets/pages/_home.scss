@@ -76,6 +76,14 @@ $opaque: #B7B7B7;
     border-color: $button_color;
   }
 
+  .search_button:hover {
+  background-color: #ff5a5f;
+  -webkit-transition-duration: 0.3s; /* Safari */
+  transition-duration: 0.3s;
+  font-weight: bolder;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
   .anywhere {
     width: 375px;
     color: $opaque;
