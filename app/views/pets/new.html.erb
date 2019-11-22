@@ -1,11 +1,23 @@
-<div class="container">
-<h1> Add a pet:</h1>
+<div class="container" id="pet_adder_container">
+  <div class="pet_adder">
+<h3> Add a pet:</h3>
+<%= simple_form_for @pet do |f| %>
+  <%= f.input :name, label: 'Your pet name please', error: 'Name is mandatory, please specify one' %>
+  <%= f.input :age %>
+  <%= f.input :species, :collection => %w[Dog Cat Fish Horse Reptile],class: 'select2' %>
 
+  <%= f.input :location , input_html: { id: 'city'} %>
 
-
-
-
-
+  <%= f.input :gender, :collection => %w[Male Female] ,class: 'select2' %>
+  <%= f.input :temperament, :collection => %w[Calm Nervous Quiet Active], class: 'select2' %>
+  <%= f.input :child_friendly%>
+  <%= f.input :guidelines %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <br>
+  <%= f.button :submit, class: "signin_button" %>
+<% end %>
+</div>
+</div>
 
 
 
@@ -38,22 +50,7 @@ algoliaAuto();
 
 
 
-<%= simple_form_for @pet do |f| %>
-  <%= f.input :name, label: 'Your pet name please', error: 'Name is mandatory, please specify one' %>
-  <%= f.input :age %>
-  <%= f.input :species, :collection => %w[Dog Cat Fish Horse Reptile],class: 'select2' %>
 
-  <%= f.input :location , input_html: { id: 'city'} %>
-
-  <%= f.input :gender, :collection => %w[Male Female] ,class: 'select2' %>
-  <%= f.input :temperament, :collection => %w[Calm Nervous Quiet Active], class: 'select2' %>
-  <%= f.input :child_friendly  %>
-  <%= f.input :guidelines %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <br>
-  <%= f.button :submit, class: "add-pet-btn" %>
-<% end %>
-</div>
 
 
 
