@@ -1,47 +1,62 @@
-
 <div class="container ">
-  <div class= "row cool-cont">
-    <div class="col-12 col-sm-6 col-md-4 border-booking" >
-      <h1> Bookings you have requested:</h1>
-      <% @bookings.each do |booking| %>
-        <% if booking.user_id == current_user.id %>
-          <div class= "card-form">
-            <h3>Booking for: <%= Pet.find(booking.pet_id).name.capitalize %></h3>
-            <p><strong> Status: </strong><%= booking.status %></p>
-            <p><strong> Starting Date: </strong><%= booking.startingdate %></p>
-            <p><strong> Ending Date: </strong><%= booking.endingdate %></p>
+  <h1> Bookings you have requested:</h1>
+  <div class= "row columnise">
+    <% @bookings.each do |booking| %>
+      <div class="col-12 col-sm-6 col-md-4 rounded-borders">
+        <div class="card-trip">
+          <%= cl_image_tag Pet.find(booking.pet_id).photos.first.key, height: 300, width: 640, crop: :fill %>
+          <div class="card-trip-infos">
+            <div>
+              <%= Pet.find(booking.pet_id).name.capitalize %>
+              <p><strong> Name: </strong><%= Pet.find(booking.pet_id).name.capitalize %></p>
+                    <br>
+                    <p><strong> Status: </strong><%= booking.status %></p>
+                    <br>
+                    <p><strong> Starting Date: </strong><%= booking.startingdate %></p>
+                    <p><strong> Ending Date: </strong><%= booking.endingdate %></p>
+            </div>
           </div>
-          <% else %>
-          <p>You have not requested any booking yet.</p>
-        <% end %>
-      <% end %>
-    </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="row columnise">
 
-    <div class="col-12 col-sm-6 col-md-4 border-booking" >
-      <h1> Bookings you have received:</h1>
-      <% @bookings.each do |booking| %>
+    <h1> Bookings you have received:</h1>
+    <% @bookings.each do |booking| %>
 
-      <% pet = Pet.find(booking.pet_id) %>
-      <% if pet.user_id == current_user.id %>
-      <div class= "card-form">
+      <div class="col-12 col-sm-6 col-md-4 rounded-borders">
+        <div class="card-trip">
+        <% if Pet.find(booking.pet_id).user_id == current_user.id %>
+          <%= cl_image_tag Pet.find(booking.pet_id).photos.first.key, height: 300, width: 640, crop: :fill %>
+          <%= cl_image_tag User.find(booking.user_id).photo.key, height: 300, width: 640, crop: :fill %>
+          <p><strong> Renter's name: </strong><%= User.find(booking.user_id).name.capitalize %></p>
+          <br>
+          <p><strong> Starting Date: </strong><%= booking.startingdate %></p>
+          <p><strong> Ending Date: </strong><%= booking.endingdate %></p>
+          <%= simple_form_for [booking] do |f| %>
+            <%= f.input :status,:collection => %w[Pending Accepted Declined] %>
+            <%= f.button :submit, class: "btn btn-primary" %>
 
-        <p><strong>Renter's Name: </strong> <%= User.find(booking.user_id).first_name.capitalize %> <%= User.find(booking.user_id).last_name.capitalize %></p>
 
-        <br>
-        <p> <strong>Status: </strong> <%= booking.status %></p>
-        <br>
-        <p> <strong>  Starting Date: </strong><%= booking.startingdate %></p>
-        <p> <strong> Ending Date: </strong><%= booking.endingdate %></p>
-        <%= simple_form_for [booking] do |f| %>
-        <%= f.input :status,:collection => %w[Pending Accepted Declined] %>
-        <%= f.button :submit, class: "btn btn-primary" %>
+          <% end %>
+
+
         <% end %>
       </div>
       <% else %>
         <p> You have not received any booking yet.</p>
       <% end %>
       <% end  %>
+
     </div>
   </div>
+
 </div>
 
