@@ -6,7 +6,27 @@
   width: 100%;
   z-index: 100;
 }
-
+.show-title {
+  margin-left: 10vw;
+}
+.w11 {
+  object-fit: cover;
+  width: 80%;
+}
+.pb5 {
+  padding-bottom: 8px;
+}
+.pet-image {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px;
+}
+.padded {
+  padding: 10px 0px;
+}
+.spacer {
+  height: 82px;
+}
 .navbar-brand {
   display: flex;
   align-items: center;

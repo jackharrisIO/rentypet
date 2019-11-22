@@ -7,10 +7,18 @@
   display: flex;
   justify-content: flex-start;
 }
-
+#new_booking {
+  padding-top: 20px !important;
+  width: 380px;
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
 .pet-information {
+  margin: 0 10vw;
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
 }
 
 .owner-options {
