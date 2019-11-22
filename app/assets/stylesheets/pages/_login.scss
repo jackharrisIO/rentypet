@@ -1,0 +1,79 @@
+
+
+.signin-container {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  width: 100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+}
+
+.already{
+}
+
+.passwordreset {
+  color: black;
+}
+
+.form-check{
+  font-size: 10px;
+}
+
+.form-group.password.optional.user_password {
+  margin-bottom: 5px;
+}
+
+
+.simple_form,new_user {
+      padding-bottom: 30px;
+}
+
+
+.already{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.forgotten{
+font-size: 13px;
+margin-top: 7px;
+}
+
+.sign_upbutton {
+  background-color: white;
+  color: #FF5A5F;
+  border: 1px solid #FF5A5F;
+  border-radius: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 12px;
+  padding-left: 12px;
+
+  width: 70px;
+  font-size: 13px;
+}
+
+
+.signin-box {
+  width: 350px;
+  padding-right: 0px;
+  padding-bottom: 30px;
+  padding-top: 0px;
+  padding-left: 0px;
+
+  height: 420px;
+}
+
+.signin_button {
+  background-color: #ff5a5f;
+    font-family: 'Montserrat', sans-serif;
+    color: white!important;
+    padding: 10px 22px;
+    border-radius: 4px;
+    border-color: #ff5a5f;
+    font-weight: normal;
+    width: 100%;
+}

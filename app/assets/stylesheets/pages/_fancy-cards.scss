@@ -8,22 +8,24 @@
 
 .card-my {
   margin: 30px auto;
-  width: 350px;
   height: 300px;
+  width: 500px;
   border-radius: 5px;
-box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.15), -5px -5px 30px 7px rgba(0,0,0,0.18);
+  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.15), -5px -5px 30px 7px rgba(0,0,0,0.18);
   cursor: pointer;
   transition: 0.4s;
+  background-size: cover;
+  background-position: center;
 }
 
 .card-my .card_image {
-  width: inherit;
+  width: 200px;
   height: inherit;
   border-radius: 5px;
 }
 
 .card-my .card_image img {
-  width: inherit;
+  width: 200px;
   height: inherit;
   border-radius: 5px;
   object-fit: cover;
