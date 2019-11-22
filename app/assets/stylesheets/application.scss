@@ -15,12 +15,58 @@
 
 /* Colors */
 /* ---------------------------------------- */
-$border:     #c6c6c6;
+// $border:     #c6c6c6;
 $border-focus: #9FB1C1;
 $brand-color:  #1b3d4d;
-$booking-green: #bdcc00;
+// $booking-green: #bdcc00;
 $asphalt:     #506982;
+$main:     #03CEA4;
+$secondary: #005845;
 
+.index-flex {
+  display:flex
+}
+
+
+.form-home {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  // flex-direction: column;
+
+}
+
+.form-item {
+  margin: 10px;
+
+}
+
+.add-pet {
+  background-color: $main;
+  &:hover {
+  background-color: $secondary;
+  }
+}
+
+.login-button{
+border-color: $main;
+color: $main;
+border: 2px solid;
+border-radius: 10px;
+&:hover {
+  border-color: $secondary;
+  }
+}
+
+.navbar-lewagon {
+  // [...]
+  background-color: transparent;
+  transition: 0.5s background-color ease;
+}
+
+.navbar-lewagon-white {
+  background-color: white;
+}
 .cool-cont {
   display: flex;
   justify-content: space-between;
@@ -31,7 +77,8 @@ $asphalt:     #506982;
 }
 
 .card-form {
-  border: 3px solid $border;
+  border: 3px solid;
+  border-color: $main;
   border-radius: 10px;
   padding: 50px;
   margin: 20px;
@@ -68,7 +115,7 @@ h2.heading{
   text-transform: uppercase;
   font-weight: 300;
   text-align: left;
-  color: $asphalt;
+  color: $main;
   border-bottom: 1px solid $asphalt;
   padding-bottom: 3px;
   margin-bottom: 20px;
@@ -83,10 +130,11 @@ h2.heading{
   select{
     padding: 12px;
     font-size: 14px;
-    border: 1px solid $border;
+    border: 1px solid;
+    border-color: $main;
     width: 100%;
     margin-bottom: 18px;
-    color: #888;
+    color: $main;
     // font-family: 'Lato', 'sans-serif';
     font-size: 16px;
     font-weight: 300;
@@ -97,7 +145,7 @@ h2.heading{
       outline: none;
       border-color: $border-focus;
       + label{
-        color: $booking-green;
+        color: $main;
           cursor: text;
       }
     }
@@ -107,7 +155,7 @@ h2.heading{
     position:absolute;
     right: 10px;
     top: 17px;
-    color: #999;
+    color: $main;
   }
   select{
     // @include appearance(none);

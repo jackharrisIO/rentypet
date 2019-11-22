@@ -11,7 +11,10 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 
 // import { initSelect2 } from '../components/initselect2';
 // import { places } from '../packs/places';
-initUpdateNavbarOnScroll();
+if (document.querySelector(".home_banner")) {
+  initUpdateNavbarOnScroll();
+};
+
 initAutocomplete();
 
 // initSelect2();
