@@ -3,6 +3,26 @@
   justify-content: center;
 }
 
+.owner-options {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.pet-information {
+  display: flex;
+  align-items: flex-start;
+}
+
+.owner-options {
+  align-items: center;
+  width: 360px;
+  justify-content: space-between;
+}
+
+#show-pet-available {
+  padding: 2px;
+}
+
 .show_card {
   display: flex;
   flex-direction: column;
