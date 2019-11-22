@@ -41,7 +41,7 @@ algoliaAuto();
 <%= simple_form_for @pet do |f| %>
   <%= f.input :name, label: 'Your pet name please', error: 'Name is mandatory, please specify one' %>
   <%= f.input :age %>
-  <%= f.input :species, :collection => %w[Dog Cat Teaching-Assistant Ape Reptile],class: 'select2' %>
+  <%= f.input :species, :collection => %w[Dog Cat Fish Horse Reptile],class: 'select2' %>
   <%= f.input :personality %>
   <%= f.input :location , input_html: { id: 'city'} %>
 
