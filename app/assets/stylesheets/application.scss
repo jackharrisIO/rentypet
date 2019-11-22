@@ -28,8 +28,18 @@ $secondary: #04896D;
   display:flex
 }
 
+.columnise {
+  display: flex;
+  flex-direction: column;
+}
 
 
+.rounded-borders{
+  border: 2px solid;
+  border-radius: 10px;
+  padding:20px;
+  background: white;
+}
 
 a:hover {
   font-color: $main;

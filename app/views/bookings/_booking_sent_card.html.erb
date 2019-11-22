@@ -1,0 +1,17 @@
+<div class="card-trip">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+  <div class="card-trip-infos">
+    <div>
+      <%= Pet.find(booking.pet_id).name.capitalize %>
+      <p><strong> Name: </strong><%= Pet.find(booking.pet_id).name.capitalize %></p>
+            <br>
+            <p><strong> Status: </strong><%= booking.status %></p>
+            <br>
+            <p><strong> Starting Date: </strong><%= booking.startingdate %></p>
+            <p><strong> Ending Date: </strong><%= booking.endingdate %></p>
+    </div>
+    <h2 class="card-trip-pricing">£99.99</h2>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+  </div>
+</div>
+
