@@ -1,5 +1,7 @@
 // Specific CSS for your home-page
 $button_color: #FF5A5F;
+$main:     #03CEA4;
+$main_hover: #00896D;
 $white: #FFFFFF;
 $text_color: #484848;
 $opaque: #B7B7B7;
@@ -12,19 +14,25 @@ $opaque: #B7B7B7;
   align-items: left;
   justify-content: center;
 
-.search_card {
-  margin-bottom: 50px;
-  margin-left: 100px;
-  min-width: 450px;
-  min-height: 480px;
-  width: fit-content;
-  border-radius: 5px;
-  background-color: $white;
-  padding: 32px;
-  padding-bottom: 24px;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
-  opacity: 0.95;
-}
+  .search_card {
+    margin-bottom: 50px;
+    margin-left: 100px;
+    min-width: 450px;
+    min-height: 480px;
+    // width: fit-content;
+    width: 300px;
+    height: 500px;
+    border-radius: 5px;
+    background-color: $white;
+    padding: 32px;
+    padding-bottom: 24px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    opacity: 0.95;
+  }
+
+  .dynamic-text {
+    height: 40px;
+  }
 
   .form-style {
 
@@ -68,12 +76,16 @@ $opaque: #B7B7B7;
   }
 
   .search_button {
-    background-color: $button_color;
+    background-color: $main;
     font-family: 'Montserrat', sans-serif;
     color: $white;
     padding: 10px 22px;
     border-radius: 4px;
-    border-color: $button_color;
+    border-color: $white;
+    &:hover {
+      background-color: $main_hover;
+      transition: 1s;
+    }
   }
 
   .search_button:hover {

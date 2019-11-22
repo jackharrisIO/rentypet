@@ -3,19 +3,39 @@
   <br>
   <br>
   <div class="search_card d-flex flex-column">
-    <h1><span id="banner-typed-text"></span></h1>
-      <form class="form-style">
-      <div class="where">WHERE</div>
-        <input class="anywhere" type="text" placeholder="Anywhere"><br>
-      <div class="collect">COLLECT</div>
-        <input class="calender" type="date" placeholder="dd-mm-yyyy"><br><br>
-      <div class="button-right">
-        <input class="search_button" type="submit" value="Search">
-      </div>
-    </form>
+    <div class= "dynamic-text">
+      <h1><span id="banner-typed-text"></span></h1>
+    </div>
+    <!-- <form class="form-style"> -->
+      <div >
 
-  </div>
-</div>
+        <%= form_tag pets_path, method: :get do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control form-item form-home",
+          placeholder: "Search by category"
+          %>
+          <%= submit_tag "Search", class: "login-button form-item" %>
+          <% end %>
+      </div>
+
+      <!-- <div>
+          <%= form_tag pets_path, method: :get do %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control form-item",
+            placeholder: "Search by date"
+            %>
+            <%= submit_tag "Search", class: "btn btn-dark " %>
+            <% end %>
+      </div> -->
+          <!-- <div class="button-right">
+            <input class="search_button" type="submit" value="Search">
+          </div> -->
+        <!-- </form> -->
+      </div>
+    </div>
+
 
 <div class="pet_search">
 <%= form_tag pets_path, method: :get do %>
@@ -29,23 +49,25 @@
 </div>
 
 
-<div class="container">
-  <div class="row">
-      <% @pets.each do |pet| %>
-        <div class="col-12 col-sm-6 col-md-4">
-          <% if pet.photos.any? %>
-          <div class="card-image">
-            <% img = cl_image_path(pet.photos.first.key, width: 350, height: 300, crop: :thumb, gravity: :face) %>
-          <% else %>
-            <% img = "https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80" %>
+
+      <div class="container">
+        <div class="row">
+          <% @pets.each do |pet| %>
+          <div class="col-12 col-sm-6 col-md-4">
+            <% if pet.photos.any? %>
+            <div class="card-image">
+              <% img = cl_image_path(pet.photos.first.key, width: 350, height: 300, crop: :thumb, gravity: :face) %>
+              <% else %>
+              <% img = "https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80" %>
+              <% end %>
+              <%= link_to pet_path(pet) do %>
+              <div class="list card-my" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0)), url(<%= img  %>)">
+                <h2><%= pet.name %></h2>
+              </div>
+              <% end %>
+            </div>
+          </div>
           <% end %>
-          <%= link_to pet_path(pet) do %>
-          <div class="list card-my" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0)), url(<%= img  %>)">
-            <h2><%= pet.name %></h2>
-          </div>
-           <% end %>
-          </div>
         </div>
-      <% end %>
-  </div>
-</div>
+
+      </div>
