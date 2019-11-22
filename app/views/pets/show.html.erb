@@ -1,68 +1,55 @@
-
 <div class="show_container">
+  <div class="pet-image">
+  <% if @pet.photos.attached? %>
+    <%= cl_image_tag @pet.photos.first.key, height: 450, class: "w11" %>
+  <% end %>
+  </div>
   <div class="show-title" style=>
-    <h1><%= @pet.name.capitalize %> owned by <%= @pet.user.first_name.capitalize %></h1>
-    <h5><%= @pet.location %></h5>
+    <h1 class="padded"><%= @pet.name.capitalize %> owned by <%= @pet.user.first_name.capitalize %></h1>
+    <h5 class="padded"><%= @pet.location %></h5>
 
-    <div class="owner-options">
-      <div class="user-edits">
-        <% if current_user.id == @pet.user_id %>
-          <%= link_to "Edit", edit_pet_path(@pet),style:"margin: 5px", class: "btn btn-dark"  %>
-        <% end %>
-        <% if current_user.id == @pet.user_id %>
-          <%= link_to "Remove Pet", pet_path, :method => 'delete', class: "btn btn-dark" %>
-        <% end %>
-      </div>
-      <div class="available">
-        <% if current_user.id == @pet.user_id %>
+
+
+  </div>
+  <div class="show-title">
+    <h3>Overview</h3>
+  </div>
+  <div class="pet-information">
+    <ul style="padding-left: 0px;padding-top: 20px;">
+      <h4 class="pb5"><%= @pet.name.capitalize %> is a <i class="fa fa-<%= @pet.species.downcase %>"></i></h4>
+      <h4 class="pb5"><%= @pet.name.capitalize %> is <%= @pet.age %> years old <i class="fas fa-birthday-cake"></i></h4>
+      <% if @pet.temperament == "Friendly" %>
+        <h4 class="pb5"><%= @pet.name.capitalize %> is friendly <i class="fas fa-grin-beam"></i></h4>
+      <% elsif @pet.temperament == "Calm" %>
+        <h4 class="pb5"><%= @pet.name.capitalize %> is calm <i class="fas fa-smile-beam"></i></h4>
+      <% elsif @pet.temperament == "Naughty" %>
+        <h4 class="pb5"><%= @pet.name.capitalize %> is naughty <i class="fas fa-smile-wink"></i></h4>
+      <% else %>
+        <h4 class="pb5"><%= @pet.name.capitalize %> is playful <i class="fas fa-grin-squint"></i></h4>
+      <% end %>
+      <% if @pet.child_friendly == "True" %>
+        <h4 class="pb5"><%= @pet.name.capitalize %> is great with children <i class="fas fa-check-circle"></i></h4>
+      <% else %>
+        <h4 class="pb5"><%= @pet.name.capitalize %> is not good with children <i class="fas fa-times-circle"></i></h4>
+      <% end %>
+      <div class="owner-options">
+        <div class="user-edits">
+          <% if current_user.id == @pet.user_id %>
+            <%= link_to "Edit", edit_pet_path(@pet),style:"margin: 5px", class: "btn btn-dark"  %>
+          <% end %>
+          <% if current_user.id == @pet.user_id %>
+            <%= link_to "Remove Pet", pet_path, :method => 'delete', class: "btn btn-dark" %>
+          <% end %>
+        </div>
+        <div class="available">
           <%= simple_form_for @pet do |f| %>
             <div class="custom-control custom-switch" id="show-pet-available">
               <%= f.check_box :available, class: "custom-control-input", id: "customSwitch1", onchange: "this.form.submit()" %>
               <label class="custom-control-label" for="customSwitch1">Available </label>
             </div>
           <% end %>
-        <% end %>
+        </div>
       </div>
-    </div>
-
-
-  </div>
-  <div class="pet-image">
-  <% if @pet.photos.attached? %>
-    <%= cl_image_tag @pet.photos.first.key, height: 300, width: 640, crop: :fill %>
-  <% end %>
-  </div>
-  <div class="overview">
-    <h5>Overview</h5>
-  </div>
-  <div class="pet-information">
-    <ul>
-    <% if @pet.species == "Dog" %>
-    <i class="fas fa-dog"></i><h4><%= @pet.name.capitalize %> is a dog</h4>
-    <% elsif @pet.species == "Cat" %>
-    <i class="fas fa-cat"></i><h4><%= @pet.name.capitalize %> is a cat</h4>
-    <% elsif @pet.species == "Ape" %>
-    <i class="fas fa-horse"></i><h4><%= @pet.name.capitalize %> is a horse</h4>
-    <% elsif @pet.species == "Teaching Assistant" %>
-    <i class="fas fa-fish"></i><h4><%= @pet.name.capitalize %> is a fish</h4>
-    <% else %>
-    <i class="fas fa-frog"></i><h4><%= @pet.name.capitalize %> is a reptile</h4>
-    <% end %>
-    <i class="fas fa-birthday-cake"></i><h4><%= @pet.name.capitalize %> is <%= @pet.age %> years old</h4>
-    <% if @pet.temperament == "Friendly" %>
-    <i class="fas fa-grin-beam"></i><h4><%= @pet.name.capitalize %> is friendly</h4>
-    <% elsif @pet.temperament == "Calm" %>
-    <i class="fas fa-smile-beam"></i><h4><%= @pet.name.capitalize %> is calm</h4>
-    <% elsif @pet.temperament == "Naughty" %>
-    <i class="fas fa-smile-wink"></i><h4><%= @pet.name.capitalize %> is naughty</h4>
-    <% else %>
-    <i class="fas fa-grin-squint"></i><h4><%= @pet.name.capitalize %> is playful</h4>
-    <% end %>
-    <% if @pet.child_friendly == "True" %>
-    <i class="fas fa-check-circle"></i><h4><%= @pet.name.capitalize %> is great with children</h4>
-    <% else %>
-    <i class="fas fa-times-circle"></i><h4><%= @pet.name.capitalize %> is not good with children</h4>
-    <% end %>
     </ul>
   <div class="booking-details">
     <% if current_user.bookings.pluck(:pet_id).include?(@pet.id) %>
@@ -75,112 +62,17 @@
         <%= f.input :startingdate %>
         <!-- <input type="text" placeholder="Your Message Here" formaction=""> -->
         <br>
-        <%= f.button :submit %>
+        <br>
+        <%= f.button :submit, class: "signin_button" %>
       <% end %>
     <% end %>
   </div>
   </div>
-
-  <div class="show_card deets">
-    <div class="show_details">
-      <div style="align-items: center; justify-content: center">
-
-
-
-
-          <% if current_user.id == @pet.user_id %>
-            <%= link_to "Update", edit_pet_path(@pet),style:"margin: 30px", class: "btn btn-primary"  %>
-          <% end %>
-
-
-
-          <% if current_user.id == @pet.user_id %>
-            <%= link_to "Remove Animal", pet_path, :method => 'delete', class: "btn btn-primary m-3" %>
-
-
-          <% elsif current_user.bookings.pluck(:pet_id).include?(@pet.id) %>
-            <div class="">
-            You booked <%= @pet.name.capitalize %> on the following dates: <br> <%= current_user.bookings.where(pet_id: @pet.id).first.startingdate %> <br> - <br> <%= current_user.bookings.where(pet_id: @pet.id).first.endingdate %>
-            </div>
-          <% else  %>
-
-          <%= simple_form_for [@pet, @booking] do |f| %>
-          <%= f.input :endingdate %>
-          <%= f.input :startingdate %>
-          <input type="text" placeholder="Your Message Here" formaction="">
-
-          <br>
-          <%= f.button :submit %>
-
-
-
-
-        <% end %>
-
-        <% end %>
-      </div>
-
-          <% if current_user.id == @pet.user_id %>
-            <%= simple_form_for @pet do |f| %>
-             <div class="custom-control custom-switch">
-                <%= f.check_box :available, class: "custom-control-input", id: "customSwitch1", onchange: "this.form.submit()"   %>
-
-              <label class="custom-control-label" for="customSwitch1">Available </label>
-             </div>
-          <% end %>
-
-            </div>
-        <div class="deets">
-           <% end %>
-
-          <div style= "padding: 50px">
-          <h3><%= @pet.name.capitalize %></h3>
-          <% if @pet.photos.attached? %>
-            <%= cl_image_tag @pet.photos.first.key, height: 300, width: 400, crop: :fill %>
-          <% end %>
-
-          <h6> <strong> <%= @pet.name.capitalize %>'s Location:</strong><%= @pet.location %></h6>
-          </div>
-
-        </div>
-      </div>
-
-
-
-
-      <div class="list-inline details_card">
-        <ul>
-          <li><strong>Age:</strong> <%= @pet.age%></li>
-          <br>
-          <li><strong>Gender:</strong><%= @pet.gender %></li>
-          <br>
-          <li><strong>Child Friendly: </strong><%= @pet.child_friendly==true ? "yes" : "no" %></li>
-          <br>
-          <li><strong>Personality: </strong><%= @pet.personality %></li>
-          <br>
-          <li><strong>Location: </strong><%= @pet.location %></li>
-          <br>
-          <li><strong>Temperament: </strong><%= @pet.temperament %></li>
-          <br>
-
-        </ul>
-    </div>
-          <div >
-            <strong>Guidelines:</strong>
-            <p class="guidelines">
-              <%= @pet.guidelines %>
-
-            </p>
-          </div>
-          <div
-  id="map"
-  style="width: 80%;
-  margin:0px auto;
-  height: 500px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
+    <div id="map" style="width: 80%; margin:0px auto; height: 500px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
+  </div>
+
+
 
 
 

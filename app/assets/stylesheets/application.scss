@@ -22,11 +22,14 @@ $brand-color:  #1b3d4d;
 // $booking-green: #bdcc00;
 $asphalt:     #506982;
 $main:     #03CEA4;
-$secondary: #04896D;
+$main-hover: #04896D;
+$secondary: #0E6ED7;
+
 
 .index-flex {
   display:flex
 }
+
 
 .columnise {
   display: flex;
@@ -41,9 +44,17 @@ $secondary: #04896D;
   background: white;
 }
 
-a:hover {
-  font-color: $main;
-  transition: 1s;
+.border-booking {
+  border: 2px solid;
+  border-color: $secondary;
+  border-radius: 30px;
+  padding: 10px;
+
+}
+
+
+#egg:hover {
+  color: $main;
 }
 
 
@@ -56,7 +67,7 @@ a:hover {
 }
 
 .form-item {
-  margin: 10px;
+  margin: 10px 0px ;
 
 }
 
@@ -67,13 +78,29 @@ a:hover {
   }
 }
 
+#form-id {
+  padding: 4em 0px;
+  display: flex;
+
+}
+
+#input-home {
+  width: 200px;
+  margin-right: 20px;
+
+}
+
 .login-button{
 border-color: $main;
 color: $main;
 border: 2px solid;
 border-radius: 10px;
+transition: 1s;
+
 &:hover {
   border-color: $secondary;
+  color: $secondary;
+  transition: 1s;
   }
 }
 
@@ -89,7 +116,6 @@ border-radius: 10px;
 .cool-cont {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 50px;
   margin: 50px;
 

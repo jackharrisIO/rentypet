@@ -1,5 +1,4 @@
 <div class="container ">
-
   <h1> Bookings you have requested:</h1>
   <div class= "row columnise">
     <% @bookings.each do |booking| %>
@@ -49,12 +48,13 @@
           <% end %>
 
 
-
         <% end %>
+      </div>
+      <% else %>
+        <p> You have not received any booking yet.</p>
+      <% end %>
+      <% end  %>
 
-        </div>
-
-    <% end  %>
     </div>
   </div>
 
