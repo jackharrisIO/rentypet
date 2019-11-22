@@ -1,0 +1,37 @@
+.footer {
+  margin-top: 65px;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+}
+
+.hackers {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.hackers li {
+  padding: 0px 3px;
+}
+
+.hackers img {
+-webkit-transition-duration: 2s;
+-moz-transition-duration: 2s;
+-o-transition-duration: 2s;
+transition-duration: 2s;
+-webkit-transition-property: -webkit-transform;
+-moz-transition-property: -moz-transform;
+-o-transition-property: -o-transform;
+transition-property: transform;
+}
+
+.hackers img:hover {
+-webkit-transform:rotate(720deg);
+-moz-transform:rotate(720deg);
+-o-transform:rotate(720deg);
+}
