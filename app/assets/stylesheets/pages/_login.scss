@@ -1,4 +1,6 @@
-
+$main:     #03CEA4;
+$main-hover: #04896D;
+$secondary: #0E6ED7;
 
 .signin-container {
   display: flex;
@@ -12,8 +14,13 @@
 }
 
 .whatever{
-  color: #ff5a5f;
+  color: $secondary;
   font-size: 10px;
+  transition: 1s;
+  &:hover {
+    color: $main-hover;
+    transition: 1s;
+  }
 }
 
 .passwordreset {
@@ -46,16 +53,21 @@ margin-top: 7px;
 
 .sign_upbutton {
   background-color: white;
-  color: #FF5A5F;
-  border: 1px solid #FF5A5F;
+  color: $main;
+  border: 1px solid $main;
   border-radius: 5px;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-right: 12px;
   padding-left: 12px;
-
+  transition: 1s;
   width: 70px;
   font-size: 13px;
+  &:hover {
+    color: $main-hover;
+    border-color: $main-hover;
+    transition: 1s;
+  }
 }
 
 
@@ -70,12 +82,17 @@ margin-top: 7px;
 }
 
 .signin_button {
-  background-color: #ff5a5f;
+  background-color: $main;
     font-family: 'Montserrat', sans-serif;
     color: white!important;
     padding: 10px 22px;
     border-radius: 4px;
-    border-color: #ff5a5f;
+    border-color: $main;
     font-weight: normal;
     width: 100%;
+    transition:1s;
+    &:hover {
+    background-color: $main-hover;
+    transition: 1s;
+  }
 }

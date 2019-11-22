@@ -22,10 +22,18 @@ $brand-color:  #1b3d4d;
 // $booking-green: #bdcc00;
 $asphalt:     #506982;
 $main:     #03CEA4;
-$secondary: #005845;
+$secondary: #04896D;
 
 .index-flex {
   display:flex
+}
+
+
+
+
+a:hover {
+  font-color: $main;
+  transition: 1s;
 }
 
 
