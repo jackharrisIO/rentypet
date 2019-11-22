@@ -36,7 +36,7 @@
         <% if Pet.find(booking.pet_id).user_id == current_user.id %>
           <%= cl_image_tag Pet.find(booking.pet_id).photos.first.key, height: 300, width: 640, crop: :fill %>
           <%= cl_image_tag User.find(booking.user_id).photo.key, height: 300, width: 640, crop: :fill %>
-          <p><strong> Renter's name: </strong><%= User.find(booking.user_id).name.capitalize %></p>
+          <p><strong> Renter's name: </strong><%= User.find(booking.user_id).first_name.capitalize %></p>
           <br>
           <p><strong> Starting Date: </strong><%= booking.startingdate %></p>
           <p><strong> Ending Date: </strong><%= booking.endingdate %></p>
