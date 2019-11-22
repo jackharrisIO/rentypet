@@ -9,7 +9,7 @@
 .card-my {
   margin: 30px auto;
   height: 300px;
-  width: 500px;
+  min-width: 200px;
   border-radius: 5px;
   box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.15), -5px -5px 30px 7px rgba(0,0,0,0.18);
   cursor: pointer;

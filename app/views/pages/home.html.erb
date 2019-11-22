@@ -35,21 +35,6 @@
         <!-- </form> -->
       </div>
     </div>
-
-
-<div class="pet_search">
-<%= form_tag pets_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Search by category"
-  %>
-  <%= submit_tag "Let's go", class: "form-control btn btn-info" %>
-<% end %>
-</div>
-
-
-
       <div class="container">
         <div class="row">
           <% @pets.each do |pet| %>
