@@ -41,6 +41,7 @@
 
 
 
+
     <% elsif @user.id != current_user.id %>
     <div class="container">
       <h1><%= User.find(params[:user_id]).first_name.capitalize %>'s pets</h1>
@@ -68,6 +69,7 @@
       <h1>Found <%= pluralize(@pets.size, 'result') %> for "<%= params[:query] %>"</h1>
       <% else  %>
 
+
       <h1> All pets available</h1>
       <div class="container">
           <div class="row">
@@ -87,6 +89,7 @@
                         </div>
                         <h2 class="card-pet-pricing"></h2>
 
+
                         <% if pet.user.photo.key %>
                           <%= cl_image_tag pet.user.photo.key, class: "avatar-bordered" %>
                         <% else %>
@@ -94,6 +97,7 @@
                         <% end %>
                       </div>
                     <% end %>
+
                   </div>
                 <% end %>
               </div>

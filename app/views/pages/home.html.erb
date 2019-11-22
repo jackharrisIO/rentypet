@@ -9,34 +9,22 @@
     <!-- <form class="form-style"> -->
       <div >
 
-        <%= form_tag pets_path, method: :get do %>
+        <%= form_tag pets_path, method: :get, id: "form-id" do %>
         <%= text_field_tag :query,
         params[:query],
-        class: "form-control form-item form-home",
+        class: "form-control form-item form-home", id: "input-home",
           placeholder: "Search by category"
           %>
           <%= submit_tag "Search", class: "login-button form-item" %>
           <% end %>
       </div>
 
-      <!-- <div>
-          <%= form_tag pets_path, method: :get do %>
-          <%= text_field_tag :query,
-          params[:query],
-          class: "form-control form-item",
-            placeholder: "Search by date"
-            %>
-            <%= submit_tag "Search", class: "btn btn-dark " %>
-            <% end %>
-      </div> -->
-          <!-- <div class="button-right">
-            <input class="search_button" type="submit" value="Search">
-          </div> -->
-        <!-- </form> -->
+
       </div>
     </div>
     <div>
       <!-- <h2> All the Pets Available:</h2> -->
+
       <br>
       <br>
         <div class="container">
@@ -69,4 +57,5 @@
               </div>
 
             </div>
+
 

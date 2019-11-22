@@ -1,23 +1,23 @@
 
 <div class="container ">
   <div class= "row cool-cont">
-    <div class="col-12 col-sm-6 col-md-4" style="border: 3px solid">
+    <div class="col-12 col-sm-6 col-md-4 border-booking" >
       <h1> Bookings you have requested:</h1>
       <% @bookings.each do |booking| %>
         <% if booking.user_id == current_user.id %>
           <div class= "card-form">
-            <p><strong> Name: </strong><%= Pet.find(booking.pet_id).name.capitalize %></p>
-            <br>
+            <h3>Booking for: <%= Pet.find(booking.pet_id).name.capitalize %></h3>
             <p><strong> Status: </strong><%= booking.status %></p>
-            <br>
             <p><strong> Starting Date: </strong><%= booking.startingdate %></p>
             <p><strong> Ending Date: </strong><%= booking.endingdate %></p>
           </div>
+          <% else %>
+          <p>You have not requested any booking yet.</p>
         <% end %>
       <% end %>
     </div>
 
-    <div class="col-12 col-sm-6 col-md-4" style="border: 3px solid">
+    <div class="col-12 col-sm-6 col-md-4 border-booking" >
       <h1> Bookings you have received:</h1>
       <% @bookings.each do |booking| %>
 
@@ -37,6 +37,8 @@
         <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>
       </div>
+      <% else %>
+        <p> You have not received any booking yet.</p>
       <% end %>
       <% end  %>
     </div>
