@@ -1,3 +1,11 @@
+
+<div class="spacer"></div>
+<div class="container">
+
+
+
+
+
 <div class="container" id="pet_adder_container">
   <div class="pet_adder">
 <h3> Add a pet:</h3>
@@ -5,6 +13,7 @@
   <%= f.input :name, label: 'Your pet name please', error: 'Name is mandatory, please specify one' %>
   <%= f.input :age %>
   <%= f.input :species, :collection => %w[Dog Cat Fish Horse Reptile],class: 'select2' %>
+
 
   <%= f.input :location , input_html: { id: 'city'} %>
 
