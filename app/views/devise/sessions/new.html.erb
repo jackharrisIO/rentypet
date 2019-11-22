@@ -1,24 +1,50 @@
 <div class= "container">
-  <br>
-  <br>
-  <h2>Log in</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in", class:"btn btn-primary" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
-</div>
+
+  <div class="signin-container">
+
+
+    <div class=" signin-box">
+      <div>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email,
+          label: false,
+          required: false, placeholder: "email",
+          autofocus: true,
+          input_html: { autocomplete: "email" } %>
+          <%= f.input :password,
+          label: false,
+          required: false, placeholder: "******",
+          input_html: { autocomplete: "current-password" } %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Log in", class:"signin_button" %>
+        </div>
+        <% end %>
+
+        <div class="already">
+        <div>
+          <h6 class="forgotten"> Don't have an account?</h6>
+        </div>
+        <div>
+        <a class="sign_upbutton" href="/users/sign_in">Sign Up</a>
+        </div>
+        </div>
+
+
+          <div>
+
+
+          </div>
+
+        </div>
+
+        <h6 class="passwordreset"><%= link_to "Forgot Password", new_user_password_path %><h6>
+      </div>
+
+
